@@ -1,4 +1,4 @@
-// Copyright 2013-2015 The Rust Project Developers. See the COPYRIGHT
+// Copyright 2017 The Rust Project Developers. See the COPYRIGHT
 // file at the top-level directory of this distribution and at
 // http://rust-lang.org/COPYRIGHT.
 //
@@ -8,10 +8,15 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use std::mem;
+enum X {
+    Y
+}
+
+struct Z {
+    x: X
+}
 
 fn main() {
-    mem::transmute(0);
-    //~^ ERROR type annotations needed [E0282]
-    //~| NOTE cannot infer type for `U`
+    let z = Z { x: X::Y };
+    let _ = &mut z.x;
 }
